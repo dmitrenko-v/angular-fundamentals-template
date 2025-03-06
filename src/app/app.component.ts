@@ -87,7 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // 5.2 Unsubscribe from all subscriptions
     // YOUR CODE STARTS HERE
     
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe);
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
     
     // YOUR CODE ENDS HERE
   }
