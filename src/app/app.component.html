@@ -1,10 +1,14 @@
-<app-header></app-header>
+<app-header>
+    <app-button buttonText="Login"></app-button>
+</app-header>
 <div class="app-root">
   <!-- Search component -->
   <!--<app-search></app-search>-->
 
   <!-- Info component -->
   <!--<app-info></app-info>-->
+    
+    <app-courses-list [courses]="mockedCoursesList"></app-courses-list>
 
   <!-- Course Card component -->
   <!--<app-course-card></app-course-card>-->
