@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {
   FormArray,
-  FormBuilder, FormGroup, Validators
+  FormBuilder, FormControl, FormGroup, Validators
 } from '@angular/forms';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import {mockedAuthorsList} from "@shared/mocks/mocks";
 
 @Component({
   selector: 'app-course-form',
@@ -18,10 +19,14 @@ export class CourseFormComponent {
   courseForm: FormGroup = this.fb.group({
     title: ["", [Validators.required,  Validators.minLength(2)]],
     description: ["", [Validators.required, Validators.minLength(2)]],
-    authors: [new FormArray([])],
+    authors: this.fb.array([]),
     author: ["", [Validators.required, Validators.minLength(2)]],
     duration: [1, [Validators.min(1)]]
   })
+  
+  get currentAuthorNames(): string[] {
+    return this.authors.controls.map(c => c.value);
+  }
   
   get title() {
     return this.courseForm.controls["title"];
@@ -32,7 +37,7 @@ export class CourseFormComponent {
   }
 
   get authors() {
-    return this.courseForm.controls["authors"];
+    return this.courseForm.controls["authors"] as FormArray;
   }
 
   get duration() {
@@ -42,4 +47,32 @@ export class CourseFormComponent {
   get author() {
     return this.courseForm.controls["author"]
   }
+  
+  createAuthor() {
+    const authorName = this.author.value
+    if (this.currentAuthorNames.includes(authorName)) {
+      return;
+    }
+    this.authors.push(new FormControl(authorName));
+    mockedAuthorsList.push({id: crypto.randomUUID(), name: authorName })
+    this.author.reset();
+  }
+  
+  addAuthor(authorName: string) {
+    if (this.currentAuthorNames.includes(authorName)) {
+      return;
+    }
+    this.authors.push(new FormControl(authorName));
+  }
+  
+  deleteAuthor(authorName: string) {
+    if (!this.currentAuthorNames.includes(authorName)) {
+      return;
+    }
+    
+    const index = this.authors.controls.findIndex(c => c.value == authorName);
+    this.authors.removeAt(index);
+  }
+
+  protected readonly mockedAuthorsList = mockedAuthorsList;
 }

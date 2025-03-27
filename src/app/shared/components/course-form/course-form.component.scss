@@ -24,6 +24,7 @@
   &__authors {
     margin-top: 8px;
     display: flex;
+    flex-direction: column;
 
     &-item {
       margin-right: 10px;
