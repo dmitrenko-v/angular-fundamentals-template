@@ -19,9 +19,7 @@ export class CourseFormComponent {
     title: ["", [Validators.required,  Validators.minLength(2)]],
     description: ["", [Validators.required, Validators.minLength(2)]],
     authors: [new FormArray([])],
-    newAuthor: this.fb.group({
-      author: ["", [Validators.required, Validators.minLength(2)]]
-    }),
+    author: ["", [Validators.required, Validators.minLength(2)]],
     duration: [1, [Validators.min(1)]]
   })
   
@@ -42,6 +40,6 @@ export class CourseFormComponent {
   }
   
   get author() {
-    return this.courseForm.get("newAuthor")?.get("author")
+    return this.courseForm.controls["author"]
   }
 }
