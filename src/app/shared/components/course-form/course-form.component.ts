@@ -21,7 +21,7 @@ export class CourseFormComponent {
     description: ["", [Validators.required, Validators.minLength(2)]],
     authors: this.fb.array([]),
     author: ["", [Validators.required, Validators.minLength(2), Validators.pattern(/^[A-Za-z0-9]+$/)]],
-    duration: [1, [Validators.min(1)]]
+    duration: [1, [Validators.required, Validators.min(1)]]
   })
   
   get currentAuthorNames(): string[] {
