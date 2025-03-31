@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SessionStorageService } from "./services/session-storage.service";
 import { AuthService } from "./services/auth.service";
-import {HttpClientModule, provideHttpClient} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -13,6 +13,6 @@ import {HttpClientModule, provideHttpClient} from '@angular/common/http';
   providers: [
     SessionStorageService,
     AuthService,
-    {provide: Window, useValue: window}]
+    {provide: "Window", useValue: window}]
 })
 export class AuthModule { }
