@@ -10,7 +10,7 @@ export const routes: Routes = [
         loadChildren: () => import('./shared/components/login-form/login-form.module').then(m => m.LoginFormModule)
     },
     {
-        path: 'register',
+        path: 'registration',
         canActivate: [NotAuthorizedGuard],
         loadChildren: () => import('./shared/components/registration-form/registration-form.module').then(m => m.RegistrationFormModule)
     },
