@@ -13,7 +13,6 @@ import {HttpClientModule, provideHttpClient} from '@angular/common/http';
   providers: [
     SessionStorageService,
     AuthService,
-    provideHttpClient(),
     {provide: "Window", useValue: window}
   ]
 })

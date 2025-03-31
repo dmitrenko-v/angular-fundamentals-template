@@ -29,9 +29,7 @@ export class AuthService {
     login(user: UserDto) {
         this.httpClient.post<LoginResult>(this.getLoginUrl(), user).subscribe((res) => {
             if (res.successful) {
-                console.log(this.isAuthorized$$.value)
                 this.isAuthorised = true
-                console.log(this.isAuthorized$$.value)
                 const token = res.result.split(" ")[1]
                 this.sessionStorageService.setToken(token)
             }
@@ -40,6 +38,8 @@ export class AuthService {
 
     logout() {
         this.httpClient.delete(`${this.url}/logout`)
+        this.sessionStorageService.deleteToken();
+        this.isAuthorised = false;
     }
 
     register(user: UserDto) {

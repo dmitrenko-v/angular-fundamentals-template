@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from "rxjs";
+import {Course} from "@app/types/Course";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CoursesStoreService {
+    private courses$$ = new BehaviorSubject<Course[]>([]);
+    private isLoading$$ = new BehaviorSubject<boolean>(false);
+    
+    public isLoading$ = this.isLoading$$.asObservable();
+    public courses$ = this.courses$$.asObservable();
+    
     getAll(){
         // Add your code here
     }
