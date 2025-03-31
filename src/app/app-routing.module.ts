@@ -2,6 +2,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from "@angular/core";
 import {AuthorizedGuard} from "@app/auth/guards/authorized.guard";
 import {NotAuthorizedGuard} from "@app/auth/guards/not-authorized.guard";
+import {AuthModule} from "@app/auth/auth.module";
 
 export const routes: Routes = [
     { 

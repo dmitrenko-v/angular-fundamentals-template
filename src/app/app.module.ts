@@ -8,6 +8,7 @@ import { AuthorizedGuard } from '@app/auth/guards/authorized.guard';
 import { CoursesStoreService } from '@app/services/courses-store.service';
 import { CoursesService } from '@app/services/courses.service';
 import {AppRoutingModule} from "@app/app-routing.module";
+import {AuthModule} from "@app/auth/auth.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,8 +17,9 @@ import {AppRoutingModule} from "@app/app-routing.module";
     SharedModule,
     FontAwesomeModule,
     AppRoutingModule,
+      AuthModule
   ],
-  providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService, {provide: "Window", useValue: window}],
+  providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

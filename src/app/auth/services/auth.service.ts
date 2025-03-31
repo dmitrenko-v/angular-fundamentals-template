@@ -17,9 +17,9 @@ interface LoginResult {
     providedIn: 'root'
 })
 export class AuthService {
-    private url = "http://localhost:4000/api";
+    private url = "http://localhost:4000";
     private isAuthorized$$ = new BehaviorSubject<boolean>(false);
-    public isAuthorized$ = new Observable<boolean>();
+    public isAuthorized$ = this.isAuthorized$$.asObservable();
 
     constructor(
         private httpClient: HttpClient,
@@ -29,7 +29,9 @@ export class AuthService {
     login(user: UserDto) {
         this.httpClient.post<LoginResult>(this.getLoginUrl(), user).subscribe((res) => {
             if (res.successful) {
-                this.isAuthorized$$.next(true);
+                console.log(this.isAuthorized$$.value)
+                this.isAuthorised = true
+                console.log(this.isAuthorized$$.value)
                 const token = res.result.split(" ")[1]
                 this.sessionStorageService.setToken(token)
             }
@@ -45,7 +47,7 @@ export class AuthService {
     }
 
     get isAuthorised() {
-        return this.isAuthorized$$.value;
+        return this.sessionStorageService.getToken() != null
     }
 
     set isAuthorised(value: boolean) {
