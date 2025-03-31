@@ -21,7 +21,7 @@ import {SessionStorageService} from "@app/auth/services/session-storage.service"
     AppRoutingModule,
       AuthModule
   ],
-  providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService, AuthService, SessionStorageService, {provide: "Window", useValue: window}],
+  providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService, AuthService, SessionStorageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
