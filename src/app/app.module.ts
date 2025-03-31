@@ -19,8 +19,7 @@ import {AuthModule} from "@app/auth/auth.module";
     AppRoutingModule,
       AuthModule
   ],
-  providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService, {provide: "Window", useValue: window}
-  ],
+  providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

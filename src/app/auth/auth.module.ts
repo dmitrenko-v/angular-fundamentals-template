@@ -12,6 +12,7 @@ import {HttpClientModule, provideHttpClient} from '@angular/common/http';
   ],
   providers: [
     SessionStorageService,
-    AuthService]
+    AuthService,
+    {provide: Window, useValue: window}]
 })
 export class AuthModule { }
