@@ -19,8 +19,8 @@ import {
 
 export const coursesFeatureKey = 'courses';
 export interface CoursesState {
-    allCourses: Course[],
-    course?: Course,
+    allCourses: Course[] | null,
+    course: Course | null,
     isAllCoursesLoading: boolean,
     isSingleCourseLoading: boolean,
     isSearchState: boolean,
@@ -28,8 +28,8 @@ export interface CoursesState {
 }
 
 export const initialState: CoursesState = {
-    allCourses: [],
-    course: undefined,
+    allCourses: null,
+    course: null,
     isAllCoursesLoading: false,
     isSingleCourseLoading: false,
     isSearchState: false,
