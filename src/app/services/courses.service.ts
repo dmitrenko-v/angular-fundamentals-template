@@ -37,11 +37,11 @@ export class CoursesService {
     }
 
     createCourse(course: Course) { 
-        this.httpClient.post(`${this.coursesUrl}/add`, course)
+        return this.httpClient.post(`${this.coursesUrl}/add`, course)
     }
 
     editCourse(id: string, course: Course) { 
-        this.httpClient.put(`${this.coursesUrl}/${id}`, course)
+        return this.httpClient.put(`${this.coursesUrl}/${id}`, course)
     }
 
     getCourse(id: string) : Observable<GetOneCourseResult> {
@@ -49,11 +49,11 @@ export class CoursesService {
     }
 
     deleteCourse(id: string) {
-        this.httpClient.delete(`${this.coursesUrl}/${id}`);
+        return this.httpClient.delete(`${this.coursesUrl}/${id}`);
     }
 
     filterCourses(value: string): Observable<GetAllCoursesResult> {
-        return this.httpClient.get<GetAllCoursesResult>(`${this.coursesUrl}/filter?${value}`);
+        return this.httpClient.get<GetAllCoursesResult>(`${this.coursesUrl}/filter?title=${value}`);
     }
 
     getAllAuthors() : Observable<GetAllAuthorsResult> {
@@ -61,7 +61,7 @@ export class CoursesService {
     }
 
     createAuthor(name: string) {
-        this.httpClient.post(`${this.authorsUrl}/add`, {name})
+        return this.httpClient.post(`${this.authorsUrl}/add`, {name})
     }
 
     getAuthorById(id: string) : Observable<GetOneAuthorResult> {
